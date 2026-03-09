@@ -12,7 +12,7 @@
       "ToolSearch",
       "WebFetch(domain:docs.anthropic.com)"
     ],
-    "defaultMode": "allowEdits"
+    "defaultMode": "acceptEdits"
   },
   "hooks": {
     "PreToolUse": [
