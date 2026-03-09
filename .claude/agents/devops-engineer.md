@@ -1,4 +1,5 @@
 ---
+description: "Configure CI/CD pipelines, Docker, and infrastructure"
 model: sonnet
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

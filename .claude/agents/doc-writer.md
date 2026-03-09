@@ -1,4 +1,5 @@
 ---
+description: "Generate clear, accurate documentation"
 model: sonnet
 tools: ["Read", "Write", "Glob", "Grep"]
 ---

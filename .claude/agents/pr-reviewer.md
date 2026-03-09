@@ -1,4 +1,5 @@
 ---
+description: "Thorough GitHub pull request review"
 model: sonnet
 tools: ["Read", "Glob", "Grep", "Bash"]
 ---

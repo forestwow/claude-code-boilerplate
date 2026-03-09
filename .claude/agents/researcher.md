@@ -1,4 +1,5 @@
 ---
+description: "Deep read-only codebase exploration and analysis"
 model: sonnet
 tools: ["Read", "Glob", "Grep", "Bash"]
 ---

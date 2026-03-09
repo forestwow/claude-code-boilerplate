@@ -1,6 +1,8 @@
 ---
+description: "Review code for quality, security, and best practices"
 model: sonnet
 memory: project
+tools: ["Read", "Glob", "Grep", "Bash"]
 ---
 
 # Code Quality Reviewer

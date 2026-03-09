@@ -1,4 +1,5 @@
 ---
+description: "Execute large-scale code migrations in isolation"
 model: sonnet
 isolation: worktree
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]

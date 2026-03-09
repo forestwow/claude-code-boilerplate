@@ -1,4 +1,5 @@
 ---
+description: "Identify performance bottlenecks and optimizations"
 model: sonnet
 memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]

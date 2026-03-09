@@ -1,4 +1,5 @@
 ---
+description: "Improve code structure without changing behavior"
 model: sonnet
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

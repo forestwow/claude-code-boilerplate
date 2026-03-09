@@ -1,4 +1,5 @@
 ---
+description: "Analyze codebases and create implementation plans"
 model: opus
 permissionMode: plan
 tools: ["Read", "Glob", "Grep", "Bash"]

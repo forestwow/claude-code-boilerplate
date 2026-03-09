@@ -1,4 +1,5 @@
 ---
+description: "Systematic root cause analysis and bug fixing"
 memory: project
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

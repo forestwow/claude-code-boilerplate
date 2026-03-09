@@ -1,4 +1,5 @@
 ---
+description: "Generate and run tests for code changes"
 model: sonnet
 memory: project
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]

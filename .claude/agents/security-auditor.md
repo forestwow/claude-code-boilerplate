@@ -1,4 +1,5 @@
 ---
+description: "Security vulnerability scanning and OWASP auditing"
 model: sonnet
 memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]

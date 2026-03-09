@@ -3,6 +3,7 @@ description: "End-to-end issue resolution"
 ---
 
 Resolve GitHub issue #$ARGUMENTS.
+If no issue number is provided, list open issues with `gh issue list` and ask the user which one to resolve.
 
 Steps:
 

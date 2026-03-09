@@ -1,4 +1,5 @@
 ---
+description: "Verify all task requirements are satisfied"
 model: sonnet
 tools: ["Read", "Glob", "Grep", "Bash"]
 ---
