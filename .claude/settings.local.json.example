@@ -1,0 +1,24 @@
+{
+  "_comment": "Personal overrides — copy this to settings.local.json and customize. This file is not checked into version control.",
+
+  "_model_comment": "Set preferred model. Examples: claude-sonnet-4-20250514, claude-opus-4-20250514",
+  "model": "claude-sonnet-4-20250514",
+
+  "_env_comment": "Add personal environment variables here. These merge with settings.json env.",
+  "env": {
+    "ANTHROPIC_API_KEY": "",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+
+  "_permissions_comment": "Add extra permissions beyond the shared defaults. e.g. allow Bash for local dev.",
+  "permissions": {
+    "allow": [
+      "Bash(command:npm *)",
+      "Bash(command:yarn *)",
+      "Bash(command:pnpm *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.anthropic.com)"
+    ]
+  }
+}

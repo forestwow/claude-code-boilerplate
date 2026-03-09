@@ -1,0 +1,54 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Agent",
+      "Skill",
+      "ToolSearch",
+      "WebFetch(domain:docs.anthropic.com)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/format-after-edit.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/protect-files.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git commit'; then .claude/hooks/validate-commit.sh; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Before finishing: verify all tasks are complete. Consider delegating to the quality-gate agent to confirm nothing was missed.'"
+          }
+        ]
+      }
+    ]
+  }
+}
