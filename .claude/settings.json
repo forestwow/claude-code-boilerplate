@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
@@ -10,7 +11,14 @@
       "Agent",
       "Skill",
       "ToolSearch",
-      "WebFetch(domain:docs.anthropic.com)"
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:code.claude.com)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.env)",
+      "Edit(./.env.*)"
     ],
     "defaultMode": "acceptEdits"
   },
@@ -48,11 +56,10 @@
     ],
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Before finishing, verify all requested tasks are genuinely complete. Check: all requirements addressed, code compiles, tests pass (if applicable), no partial implementations left. If anything is incomplete, continue working. For thorough verification, delegate to the quality-gate agent."
+            "prompt": "Before finishing, verify: 1) All requested tasks are genuinely complete. 2) Code compiles and no partial implementations remain. 3) Tests pass if applicable. 4) No TODO or FIXME left from this session. If anything is incomplete, continue working."
           }
         ]
       }

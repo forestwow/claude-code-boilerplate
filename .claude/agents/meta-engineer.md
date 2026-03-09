@@ -1,8 +1,9 @@
 ---
-description: "Optimize Claude Code configurations, agents, skills, hooks, and prompts"
+name: meta-engineer
+description: "Optimize Claude Code configurations, agents, skills, hooks, and prompts. Use for auditing and improving the .claude directory."
 model: opus
 memory: project
-tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash", "WebFetch", "WebSearch"]
+tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash", "WebFetch"]
 ---
 
 # Meta Engineer

@@ -1,5 +1,6 @@
 ---
-description: "Configure CI/CD pipelines, Docker, and infrastructure"
+name: devops-engineer
+description: "Configure CI/CD pipelines, Docker, and infrastructure. Use for deployment configs, Dockerfiles, and CI workflows."
 model: sonnet
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

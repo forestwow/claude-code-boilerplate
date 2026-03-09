@@ -1,7 +1,8 @@
 ---
-description: "Generate clear, accurate documentation"
+name: doc-writer
+description: "Generate clear, accurate documentation. Use when public APIs need docs or documentation is outdated."
 model: sonnet
-tools: ["Read", "Write", "Glob", "Grep"]
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
 ---
 
 # Documentation Writer

@@ -28,6 +28,10 @@ Thumbs.db
 .env
 .env.*
 .env.local
+*.pem
+*.key
+*.p12
+*.pfx
 
 # Caches
 .mypy_cache/
@@ -37,6 +41,7 @@ __pycache__/
 *.egg-info/
 .gradle/
 .turbo/
+.cache/
 
 # Logs
 *.log
@@ -54,3 +59,21 @@ temp/
 *.so
 *.dylib
 *.class
+
+# Images and media (not useful for code analysis)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.svg
+*.mp4
+*.mp3
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Agent memory (managed by agents, not for manual editing)
+.claude/agent-memory/
+.claude/agent-memory-local/

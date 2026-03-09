@@ -34,7 +34,7 @@ fi
 find_project_root() {
   local dir="${PWD}"
   while [[ "$dir" != "/" ]]; do
-    for marker in package.json pyproject.toml setup.py go.mod Cargo.toml; do
+    for marker in package.json pyproject.toml setup.py go.mod Cargo.toml Makefile; do
       if [[ -f "$dir/$marker" ]]; then
         echo "$dir"
         return 0
@@ -54,13 +54,22 @@ lint_error() {
   local truncated="${output:0:500}"
   # Escape for JSON
   truncated="$(echo "$truncated" | sed 's/\\/\\\\/g; s/"/\\"/g; s/\t/\\t/g' | tr '\n' ' ')"
-  printf '{"error":"Linter (%s) failed. Fix issues before committing: %s"}\n' "$tool" "$truncated"
+  if command -v jq &>/dev/null; then
+    jq -n --arg reason "Linter ($tool) failed. Fix issues before committing: $truncated" '{
+      hookSpecificOutput: {
+        hookEventName: "PreToolUse",
+        permissionDecision: "deny",
+        permissionDecisionReason: $reason
+      }
+    }'
+  else
+    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Linter (%s) failed. Fix issues before committing."}}\n' "$tool"
+  fi
   exit 2
 }
 
 # --- Node.js ---
 if [[ -f "$PROJECT_ROOT/package.json" ]]; then
-  # Prefer npx eslint if available, fall back to npm run lint
   if [[ -x "$PROJECT_ROOT/node_modules/.bin/eslint" ]]; then
     LINT_OUTPUT="$(cd "$PROJECT_ROOT" && timeout "$LINT_TIMEOUT" ./node_modules/.bin/eslint . --max-warnings=0 2>&1)" || {
       EXIT_CODE=$?
@@ -89,7 +98,6 @@ if [[ -f "$PROJECT_ROOT/package.json" ]]; then
     exit 0
   fi
 
-  # No linter found for Node project — allow commit
   exit 0
 fi
 

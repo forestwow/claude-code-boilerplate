@@ -1,5 +1,7 @@
 ---
-description: "Systematic root cause analysis and bug fixing"
+name: debugger
+description: "Systematic root cause analysis and bug fixing. Use proactively when encountering errors, test failures, or unexpected behavior."
+model: sonnet
 memory: project
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

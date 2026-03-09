@@ -32,29 +32,31 @@ You are not a single-pass assistant. You are an orchestrator. Follow these princ
 3. **Never leave work half-done.** Complete every task fully — all files saved, all tests passing, all linting clean. If something blocks completion, state exactly what is blocking and what remains. Do not silently skip steps.
 4. **Plan non-trivial work.** For tasks touching 3+ files or involving architectural decisions, use `/plan` or the **planner agent** before writing code. A plan prevents wasted effort and misaligned changes.
 
-## Plugin vs Agent Guidance
+## Extension Layers
 
-This boilerplate has three extension layers. Know when to use each:
+This boilerplate has four extension layers. Know when to use each:
 
-- **Plugins** — always-on context enhancements loaded automatically. They enrich your baseline knowledge without any explicit invocation. Enabled plugins: `code-review`, `security-guidance`, `commit-commands`, `pr-review-toolkit`, `frontend-design`.
-- **Rules** (`.claude/rules/`) — project-specific directives injected into your main context. They define this project's coding standards, conventions, and expectations. Always active, lightweight.
-- **Agents** (`.claude/agents/`) — isolated subprocesses with focused system prompts. Spawned on demand for deep, scoped work. They have their own tool access and run independently from your main context.
+- **Plugins** — always-on context enhancements from marketplaces, loaded automatically via `settings.json`. They provide baseline domain knowledge. Enabled: `code-review`, `security-guidance`, `commit-commands`, `pr-review-toolkit`, `frontend-design`.
+- **Rules** (`.claude/rules/`) — project-specific directives injected into your main context. Always active, lightweight. Define coding standards and conventions.
+- **Skills** (`.claude/skills/`) — reusable workflows triggered by slash commands (e.g., `/commit`, `/test`). They run in the main conversation or fork to a subagent.
+- **Subagents** (`.claude/agents/`) — isolated subprocesses with focused system prompts. Spawned on demand for deep, scoped work. They have their own tools, model, and context.
 
 **How to choose:**
 
 | Need | Use | Example |
 |------|-----|---------|
-| Baseline domain knowledge (always on) | Plugin | `code-review` plugin informs your inline code suggestions |
-| Project-specific standards | Rule | `code-quality.md` enforces naming and comment conventions |
-| Deep focused task (multi-file, report) | Agent | `code-reviewer` agent for a thorough written review |
+| Baseline domain knowledge (always on) | Plugin | `code-review` plugin informs inline suggestions |
+| Project-specific standards | Rule | `code-quality.md` enforces naming conventions |
+| Repeatable workflow | Skill | `/commit` creates a conventional commit |
+| Deep focused task (multi-file, report) | Subagent | `code-reviewer` agent for a thorough written review |
 
-**When domains overlap** (e.g., code review has a plugin, a rule, AND an agent):
+**When domains overlap** (e.g., code review has a plugin, a rule, AND a subagent):
 
 1. **Plugin** provides the baseline — you already know code review best practices from it.
 2. **Rule** adds project-specific constraints on top (English naming, minimal comments, etc.).
-3. **Agent** is for explicit delegation — when the user asks for a thorough review, or when a skill like `/review-pr` triggers it. The agent runs in isolation, reads every file, and produces a structured report.
+3. **Subagent** is for explicit delegation — when the user asks for a thorough review, or when a skill like `/review-pr` triggers it. The subagent runs in isolation, reads every file, and produces a structured report.
 
-Do not spawn an agent for something a plugin already handles inline. Agents are for deep work, not quick guidance.
+Do not spawn a subagent for something a plugin already handles inline. Subagents are for deep work, not quick guidance.
 
 ## Verification Mandate
 
@@ -62,8 +64,8 @@ Every task must end with verification. This is non-negotiable.
 
 - **Run the tests.** Never assume they pass. Execute `{{TEST_CMD}}` and confirm green output.
 - **Run the linter.** Execute `{{LINT_CMD}}` and fix any issues before declaring completion.
-- **For significant changes** (new features, refactors, security-sensitive work), delegate to the **quality-gate agent** as a final step. It will verify completeness, correctness, and adherence to project standards.
-- **Check your own work.** Re-read the original request. Confirm every requirement is addressed. If the request had a checklist, walk through it item by item.
+- **For significant changes** (new features, refactors, security-sensitive work), delegate to the **quality-gate** subagent as a final step.
+- **Check your own work.** Re-read the original request. Walk through each requirement. If the request had a checklist, confirm every item.
 
 ## Code Standards
 

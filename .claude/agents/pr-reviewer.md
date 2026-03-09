@@ -1,7 +1,9 @@
 ---
-description: "Thorough GitHub pull request review"
+name: pr-reviewer
+description: "Thorough GitHub pull request review. Use when reviewing PRs for quality, correctness, and standards compliance."
 model: sonnet
 tools: ["Read", "Glob", "Grep", "Bash"]
+disallowedTools: ["Edit", "Write"]
 ---
 
 # GitHub PR Reviewer

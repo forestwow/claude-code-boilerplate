@@ -1,8 +1,10 @@
 ---
-description: "Identify performance bottlenecks and optimizations"
+name: performance-analyzer
+description: "Identify performance bottlenecks and optimizations. Use for profiling, algorithmic analysis, and optimization suggestions."
 model: sonnet
 memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]
+disallowedTools: ["Edit", "Write"]
 ---
 
 # Performance Analyzer

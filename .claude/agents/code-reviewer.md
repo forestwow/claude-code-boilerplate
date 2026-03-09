@@ -1,8 +1,10 @@
 ---
-description: "Review code for quality, security, and best practices"
+name: code-reviewer
+description: "Review code for quality, security, and best practices. Use proactively after code changes or before merging."
 model: sonnet
 memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]
+disallowedTools: ["Edit", "Write"]
 ---
 
 # Code Quality Reviewer

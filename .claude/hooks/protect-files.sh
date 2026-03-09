@@ -4,7 +4,7 @@ set -uo pipefail
 # Block edits to sensitive files.
 # Receives JSON via stdin from Claude Code hooks.
 # Extracts file_path from tool_input and checks against deny patterns.
-# Exit 2 with JSON error to block; exit 0 to allow.
+# Exit 2 to block; exit 0 to allow. Outputs JSON permissionDecision on block.
 
 INPUT="$(cat 2>/dev/null)" || true
 
@@ -27,13 +27,21 @@ BASENAME_LOWER="$(echo "$BASENAME" | tr '[:upper:]' '[:lower:]')"
 
 block() {
   local reason="$1"
-  # Output JSON error object for Claude Code
-  printf '{"error":"Blocked edit to %s: %s"}\n' "$BASENAME" "$reason"
+  if command -v jq &>/dev/null; then
+    jq -n --arg reason "Blocked edit to $BASENAME: $reason" '{
+      hookSpecificOutput: {
+        hookEventName: "PreToolUse",
+        permissionDecision: "deny",
+        permissionDecisionReason: $reason
+      }
+    }'
+  else
+    printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Blocked edit to %s: %s"}}\n' "$BASENAME" "$reason"
+  fi
   exit 2
 }
 
 # --- .env files ---
-# Matches .env, .env.local, .env.production, etc.
 if [[ "$BASENAME" == ".env" ]] || [[ "$BASENAME" == .env.* ]]; then
   block "environment/secrets file"
 fi
@@ -52,7 +60,7 @@ esac
 
 # --- Private key / certificate files ---
 case "$BASENAME_LOWER" in
-  *.pem|*.key)
+  *.pem|*.key|*.p12|*.pfx)
     block "private key or certificate file"
     ;;
 esac

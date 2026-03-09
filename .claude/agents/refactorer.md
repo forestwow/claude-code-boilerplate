@@ -1,5 +1,6 @@
 ---
-description: "Improve code structure without changing behavior"
+name: refactorer
+description: "Improve code structure without changing behavior. Use when code has smells, duplication, or poor readability."
 model: sonnet
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

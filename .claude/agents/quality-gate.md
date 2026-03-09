@@ -1,7 +1,9 @@
 ---
-description: "Verify all task requirements are satisfied"
+name: quality-gate
+description: "Verify all task requirements are satisfied. Use as a final check before declaring a task complete."
 model: sonnet
 tools: ["Read", "Glob", "Grep", "Bash"]
+disallowedTools: ["Edit", "Write"]
 ---
 
 # Quality Gate

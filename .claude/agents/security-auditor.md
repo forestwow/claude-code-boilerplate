@@ -1,8 +1,10 @@
 ---
-description: "Security vulnerability scanning and OWASP auditing"
+name: security-auditor
+description: "Security vulnerability scanning and OWASP auditing. Use for security reviews, dependency audits, and vulnerability identification."
 model: sonnet
 memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]
+disallowedTools: ["Edit", "Write"]
 ---
 
 # Security Auditor

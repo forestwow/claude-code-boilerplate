@@ -1,7 +1,9 @@
 ---
-description: "Deep read-only codebase exploration and analysis"
+name: researcher
+description: "Deep read-only codebase exploration and analysis. Use when you need to understand code, trace logic, or gather context before implementation."
 model: sonnet
 tools: ["Read", "Glob", "Grep", "Bash"]
+disallowedTools: ["Edit", "Write"]
 ---
 
 # Codebase Researcher
