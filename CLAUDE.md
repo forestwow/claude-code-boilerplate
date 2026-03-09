@@ -97,6 +97,7 @@ Specialized agents live in `.claude/agents/`. Delegate to them by name:
 | `quality-gate` | Final verification — completeness, tests, lint, standards |
 | `devops-engineer` | Infrastructure, CI/CD, deployment configuration |
 | `migration-worker` | Large-scale code migrations (API upgrades, pattern replacements) in isolated worktrees |
+| `meta-engineer` | Optimize Claude Code configs, agents, prompts, and hooks (opus, LLM/prompt expert) |
 
 ## Skills Quick Reference
 
@@ -114,6 +115,7 @@ Specialized agents live in `.claude/agents/`. Delegate to them by name:
 | `/research` | Investigate a topic, codebase area, or external resource |
 | `/deploy` | Run deployment workflows |
 | `/setup-project` | Replace all `{{placeholders}}` in this boilerplate |
+| `/improve-config` | Audit and optimize Claude Code agents, skills, hooks, and prompts |
 
 ## Working With This Project
 
