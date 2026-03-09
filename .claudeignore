@@ -2,8 +2,8 @@
 node_modules/
 vendor/
 .venv/
-__pycache__/
 target/
+go.sum
 
 # Build output
 dist/
@@ -24,12 +24,33 @@ coverage/
 .DS_Store
 Thumbs.db
 
+# Secrets
+.env
+.env.*
+.env.local
+
+# Caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.egg-info/
+.gradle/
+.turbo/
+
+# Logs
+*.log
+tmp/
+temp/
+
 # Large/binary files
 *.wasm
 *.map
 *.min.js
 *.min.css
 *.lock
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+*.o
+*.a
+*.so
+*.dylib
+*.class

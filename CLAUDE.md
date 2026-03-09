@@ -89,7 +89,7 @@ Specialized agents live in `.claude/agents/`. Delegate to them by name:
 | `pr-reviewer` | Review pull requests for quality, correctness, and standards |
 | `quality-gate` | Final verification — completeness, tests, lint, standards |
 | `devops-engineer` | Infrastructure, CI/CD, deployment configuration |
-| `migration-worker` | Database and data migration tasks |
+| `migration-worker` | Large-scale code migrations (API upgrades, pattern replacements) in isolated worktrees |
 
 ## Skills Quick Reference
 

@@ -19,3 +19,8 @@
 - Always run tests after writing them — never assume they pass.
 - Write the failing test first when fixing a bug.
 - Keep tests fast. Slow tests get skipped; skipped tests rot.
+
+## Mocking & Isolation
+- Mock external services (APIs, databases, file systems) at the boundary.
+- Prefer dependency injection over monkey-patching for testability.
+- Use the project's existing mock/stub patterns — check test helpers first.

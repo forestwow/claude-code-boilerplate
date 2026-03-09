@@ -8,6 +8,8 @@
 ## Comments
 - Minimal comments: only explain non-obvious "why", never "what" the code does.
 - If code needs a comment to explain what it does, rewrite the code instead.
+- Good: `// Retry 3x because the payment gateway has transient 503s under load`
+- Bad: `// Loop through the array and check each item`
 
 ## Structure
 - Functions should do one thing well (single responsibility).

@@ -75,10 +75,7 @@ case "$EXT" in
 
   go)
     if command -v gofmt &>/dev/null; then
-      FORMATTED="$(run_fmt gofmt "$FILE_PATH")" || true
-      if [[ -n "$FORMATTED" ]]; then
-        echo "$FORMATTED" > "$FILE_PATH"
-      fi
+      run_fmt gofmt -w "$FILE_PATH"
     fi
     ;;
 

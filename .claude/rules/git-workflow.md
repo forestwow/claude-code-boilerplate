@@ -5,6 +5,7 @@
 - Types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `perf`, `ci`
 - Commit messages explain "why" the change was made, not "what" changed.
 - Keep the subject line under 72 characters.
+- For breaking changes: add `BREAKING CHANGE:` in the commit body or `!` after the type (e.g., `feat!: remove legacy API`).
 
 ## Commit Scope
 - Atomic commits: one logical change per commit.

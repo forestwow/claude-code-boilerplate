@@ -10,6 +10,11 @@
 - Use specific error types, not generic `Error` or `Exception`.
 - Include enough context in errors for the caller to make a decision.
 
+## Propagation
+- Catch errors at the level that can meaningfully handle them. Rethrow or wrap otherwise.
+- Add context when wrapping: `throw new AppError('Failed to create user', { cause: originalError })`.
+- Never catch-and-ignore. If you must suppress, log the reason why.
+
 ## Logging & Debugging
 - Log errors with sufficient context for debugging (what happened, where, with what input).
 - Include correlation IDs or request context when available.
