@@ -34,20 +34,27 @@ You are not a single-pass assistant. You are an orchestrator. Follow these princ
 
 ## Plugin vs Agent Guidance
 
-This boilerplate distinguishes between two extension mechanisms:
+This boilerplate has three extension layers. Know when to use each:
 
-- **Rules** (`.claude/rules/`) inject domain knowledge directly into your main context. They cover code-review standards, security guidance, commit conventions, and frontend-design principles. They are always-on reference material — lightweight and immediate.
-- **Agents** (`.claude/agents/`) run as isolated subprocesses with focused system prompts. They are purpose-built for deep, scoped work: thorough code review, security auditing, test writing, debugging, and more.
+- **Plugins** — always-on context enhancements loaded automatically. They enrich your baseline knowledge without any explicit invocation. Enabled plugins: `code-review`, `security-guidance`, `commit-commands`, `pr-review-toolkit`, `frontend-design`.
+- **Rules** (`.claude/rules/`) — project-specific directives injected into your main context. They define this project's coding standards, conventions, and expectations. Always active, lightweight.
+- **Agents** (`.claude/agents/`) — isolated subprocesses with focused system prompts. Spawned on demand for deep, scoped work. They have their own tool access and run independently from your main context.
 
 **How to choose:**
 
-| Need | Use |
-|------|-----|
-| Quick inline guidance (naming, patterns, style) | Rules in `.claude/rules/` |
-| Deep focused work (full review, audit, refactor) | Agent from `.claude/agents/` |
-| Domain overlap (e.g., code-quality rule + code-reviewer agent) | Rule for fast checks; agent for thorough reviews |
+| Need | Use | Example |
+|------|-----|---------|
+| Baseline domain knowledge (always on) | Plugin | `code-review` plugin informs your inline code suggestions |
+| Project-specific standards | Rule | `code-quality.md` enforces naming and comment conventions |
+| Deep focused task (multi-file, report) | Agent | `code-reviewer` agent for a thorough written review |
 
-When both a rule and an agent exist for the same domain, start with the rule for quick validation. Escalate to the agent when the task requires file-by-file analysis, multi-pass reasoning, or a written report.
+**When domains overlap** (e.g., code review has a plugin, a rule, AND an agent):
+
+1. **Plugin** provides the baseline — you already know code review best practices from it.
+2. **Rule** adds project-specific constraints on top (English naming, minimal comments, etc.).
+3. **Agent** is for explicit delegation — when the user asks for a thorough review, or when a skill like `/review-pr` triggers it. The agent runs in isolation, reads every file, and produces a structured report.
+
+Do not spawn an agent for something a plugin already handles inline. Agents are for deep work, not quick guidance.
 
 ## Verification Mandate
 
