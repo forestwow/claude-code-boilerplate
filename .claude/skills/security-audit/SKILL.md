@@ -1,5 +1,7 @@
 ---
+name: security-audit
 description: "Security vulnerability audit"
+argument-hint: "[file-path or module]"
 context: fork
 agent: security-auditor
 ---

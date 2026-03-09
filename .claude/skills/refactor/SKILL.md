@@ -1,5 +1,7 @@
 ---
+name: refactor
 description: "Refactor code without changing behavior"
+argument-hint: "[file-path or module]"
 context: fork
 agent: refactorer
 ---

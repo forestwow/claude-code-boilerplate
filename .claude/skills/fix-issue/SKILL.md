@@ -1,5 +1,8 @@
 ---
+name: fix-issue
 description: "End-to-end issue resolution"
+disable-model-invocation: true
+argument-hint: "[issue-number]"
 ---
 
 Resolve the issue specified by $ARGUMENTS.

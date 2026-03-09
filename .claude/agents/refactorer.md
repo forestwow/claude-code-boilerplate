@@ -2,6 +2,7 @@
 name: refactorer
 description: "Improve code structure without changing behavior. Use when code has smells, duplication, or poor readability."
 model: sonnet
+maxTurns: 60
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---
 

@@ -1,5 +1,7 @@
 ---
+name: research
 description: "Deep codebase exploration and analysis"
+argument-hint: "[topic or question]"
 context: fork
 agent: researcher
 ---

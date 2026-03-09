@@ -2,6 +2,7 @@
 name: planner
 description: "Analyze codebases and create implementation plans. Use for tasks touching 3+ files or involving architectural decisions."
 model: opus
+maxTurns: 50
 permissionMode: plan
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Edit", "Write"]

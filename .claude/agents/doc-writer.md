@@ -2,6 +2,7 @@
 name: doc-writer
 description: "Generate clear, accurate documentation. Use when public APIs need docs or documentation is outdated."
 model: sonnet
+maxTurns: 40
 tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
 ---
 

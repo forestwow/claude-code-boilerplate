@@ -1,5 +1,7 @@
 ---
+name: setup-project
 description: "Customize this boilerplate for your project"
+disable-model-invocation: true
 ---
 
 Help customize the Claude Code boilerplate for this project.

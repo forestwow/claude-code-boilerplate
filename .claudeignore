@@ -2,8 +2,10 @@
 node_modules/
 vendor/
 .venv/
+venv/
 target/
 go.sum
+Pods/
 
 # Build output
 dist/
@@ -13,6 +15,9 @@ out/
 .nuxt/
 .output/
 coverage/
+.terraform/
+*.tfstate
+*.tfstate.backup
 
 # IDE
 .idea/
@@ -48,6 +53,11 @@ __pycache__/
 tmp/
 temp/
 
+# Databases
+*.sqlite
+*.sqlite3
+*.db
+
 # Large/binary files
 *.wasm
 *.map
@@ -59,6 +69,11 @@ temp/
 *.so
 *.dylib
 *.class
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.tgz
 
 # Images and media (not useful for code analysis)
 *.png

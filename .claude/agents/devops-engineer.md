@@ -2,6 +2,7 @@
 name: devops-engineer
 description: "Configure CI/CD pipelines, Docker, and infrastructure. Use for deployment configs, Dockerfiles, and CI workflows."
 model: sonnet
+maxTurns: 50
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---
 

@@ -2,6 +2,7 @@
 name: migration-worker
 description: "Execute large-scale code migrations in isolation. Use for API upgrades, pattern replacements, and bulk refactors."
 model: sonnet
+maxTurns: 80
 isolation: worktree
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

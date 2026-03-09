@@ -2,6 +2,7 @@
 name: quality-gate
 description: "Verify all task requirements are satisfied. Use as a final check before declaring a task complete."
 model: sonnet
+maxTurns: 30
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Edit", "Write"]
 ---

@@ -1,5 +1,7 @@
 ---
+name: perf-check
 description: "Performance analysis and optimization suggestions"
+argument-hint: "[file-path or module]"
 context: fork
 agent: performance-analyzer
 ---

@@ -29,7 +29,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/protect-files.sh"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-files.sh",
+            "timeout": 10,
+            "statusMessage": "Checking file protection rules..."
           }
         ]
       },
@@ -38,7 +40,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/validate-commit.sh"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/validate-commit.sh",
+            "timeout": 45,
+            "statusMessage": "Validating commit..."
           }
         ]
       }
@@ -49,7 +53,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".claude/hooks/format-after-edit.sh"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/format-after-edit.sh",
+            "timeout": 15,
+            "statusMessage": "Auto-formatting..."
           }
         ]
       }

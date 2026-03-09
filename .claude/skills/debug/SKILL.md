@@ -1,5 +1,7 @@
 ---
+name: debug
 description: "Debug an issue systematically"
+argument-hint: "[error description or test name]"
 context: fork
 agent: debugger
 ---

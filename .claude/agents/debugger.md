@@ -2,6 +2,7 @@
 name: debugger
 description: "Systematic root cause analysis and bug fixing. Use proactively when encountering errors, test failures, or unexpected behavior."
 model: sonnet
+maxTurns: 60
 memory: project
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---

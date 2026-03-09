@@ -1,1 +1,5 @@
 .idea/
+
+# Claude Code local settings (personal overrides, not for version control)
+.claude/settings.local.json
+.claude/agent-memory-local/

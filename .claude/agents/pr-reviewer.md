@@ -2,6 +2,7 @@
 name: pr-reviewer
 description: "Thorough GitHub pull request review. Use when reviewing PRs for quality, correctness, and standards compliance."
 model: sonnet
+maxTurns: 40
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Edit", "Write"]
 ---

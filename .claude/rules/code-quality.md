@@ -20,3 +20,9 @@
 - No dead code. No commented-out code. Delete it; git has history.
 - Remove unused imports, variables, and dependencies.
 - Consistent formatting — follow the project's established style.
+
+## Adapting to Existing Projects
+- Before writing new code, study the existing codebase patterns: naming conventions, file structure, error handling style, and test patterns already in use.
+- Match the existing project's style even if it differs from these defaults. Consistency within a project outweighs theoretical best practices.
+- When the project has an established pattern (e.g., callbacks instead of async/await, classes instead of functions), follow that pattern in new code unless explicitly asked to modernize.
+- For legacy codebases without linters or formatters, do not introduce new tooling unless asked. Write code that fits the existing style.

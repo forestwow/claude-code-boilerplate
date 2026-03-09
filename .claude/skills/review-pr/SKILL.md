@@ -1,5 +1,7 @@
 ---
+name: review-pr
 description: "Review a GitHub PR thoroughly"
+argument-hint: "[PR-number]"
 context: fork
 agent: pr-reviewer
 ---

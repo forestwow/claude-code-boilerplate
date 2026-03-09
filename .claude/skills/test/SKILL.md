@@ -1,5 +1,7 @@
 ---
+name: test
 description: "Generate and run tests"
+argument-hint: "[file-path or module]"
 context: fork
 agent: test-writer
 ---

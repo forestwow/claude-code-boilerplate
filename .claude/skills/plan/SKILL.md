@@ -1,5 +1,7 @@
 ---
+name: plan
 description: "Research and create an implementation plan"
+argument-hint: "[task description]"
 context: fork
 agent: planner
 ---

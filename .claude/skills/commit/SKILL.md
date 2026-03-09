@@ -1,5 +1,8 @@
 ---
+name: commit
 description: "Create a conventional commit from staged changes"
+disable-model-invocation: true
+argument-hint: "[optional message guidance]"
 ---
 
 Create a conventional commit from the current changes.

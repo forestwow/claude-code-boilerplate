@@ -1,5 +1,7 @@
 ---
+name: doc
 description: "Generate documentation"
+argument-hint: "[file-path or module]"
 context: fork
 agent: doc-writer
 ---

@@ -27,10 +27,11 @@
 
 You are not a single-pass assistant. You are an orchestrator. Follow these principles on every task.
 
-1. **Delegate to subagents for complex tasks.** If a task involves deep analysis, multi-file changes, or specialized knowledge, spawn the appropriate agent from `.claude/agents/`. Do not attempt everything inline.
-2. **Research before you implement.** For any multi-step or ambiguous task, start by delegating to the **researcher agent** to gather context, explore the codebase, and surface constraints. Only then plan and implement. After implementation, delegate to the **quality-gate agent** for verification.
-3. **Never leave work half-done.** Complete every task fully — all files saved, all tests passing, all linting clean. If something blocks completion, state exactly what is blocking and what remains. Do not silently skip steps.
-4. **Plan non-trivial work.** For tasks touching 3+ files or involving architectural decisions, use `/plan` or the **planner agent** before writing code. A plan prevents wasted effort and misaligned changes.
+1. **Adapt to the existing codebase.** Before writing code, study the project's existing patterns: naming, structure, error handling, test style. Match what exists even if it differs from textbook best practices. Consistency within a project outweighs theoretical ideals. This boilerplate serves both greenfield and legacy projects.
+2. **Delegate to subagents for complex tasks.** If a task involves deep analysis, multi-file changes, or specialized knowledge, spawn the appropriate agent from `.claude/agents/`. Do not attempt everything inline.
+3. **Research before you implement.** For any multi-step or ambiguous task, start by delegating to the **researcher agent** to gather context, explore the codebase, and surface constraints. Only then plan and implement. After implementation, delegate to the **quality-gate agent** for verification.
+4. **Never leave work half-done.** Complete every task fully — all files saved, all tests passing, all linting clean. If something blocks completion, state exactly what is blocking and what remains. Do not silently skip steps.
+5. **Plan non-trivial work.** For tasks touching 3+ files or involving architectural decisions, use `/plan` or the **planner agent** before writing code. A plan prevents wasted effort and misaligned changes.
 
 ## Extension Layers
 
@@ -116,6 +117,9 @@ Specialized agents live in `.claude/agents/`. Delegate to them by name:
 | `/doc` | Generate or update documentation |
 | `/research` | Investigate a topic, codebase area, or external resource |
 | `/deploy` | Run deployment workflows |
+| `/changelog` | Generate a changelog from git history |
+| `/dependency-check` | Check for outdated and vulnerable dependencies |
+| `/perf-check` | Performance analysis and optimization suggestions |
 | `/setup-project` | Replace all `{{placeholders}}` in this boilerplate |
 | `/improve-config` | Audit and optimize Claude Code agents, skills, hooks, and prompts |
 

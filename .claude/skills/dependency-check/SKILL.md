@@ -1,4 +1,5 @@
 ---
+name: dependency-check
 description: "Check for outdated and vulnerable dependencies"
 context: fork
 agent: security-auditor

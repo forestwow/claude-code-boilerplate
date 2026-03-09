@@ -2,6 +2,7 @@
 name: test-writer
 description: "Generate and run tests for code changes. Use when new code needs test coverage or existing tests need updating."
 model: sonnet
+maxTurns: 60
 memory: project
 tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"]
 ---
