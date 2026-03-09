@@ -65,7 +65,8 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Before finishing, verify: 1) All requested tasks are genuinely complete. 2) Code compiles and no partial implementations remain. 3) Tests pass if applicable. 4) No TODO or FIXME left from this session. If anything is incomplete, continue working."
+            "prompt": "You are evaluating whether Claude should stop working. Context: $ARGUMENTS\n\nAnalyze the conversation and determine if:\n1. All user-requested tasks are genuinely complete\n2. No partial implementations or compilation errors remain\n3. No TODO or FIXME were left from this session\n\nRespond with JSON: {\"ok\": true} to allow stopping, or {\"ok\": false, \"reason\": \"your explanation\"} to continue working.",
+            "timeout": 30
           }
         ]
       }
