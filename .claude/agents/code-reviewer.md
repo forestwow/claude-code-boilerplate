@@ -3,7 +3,6 @@ name: code-reviewer
 description: "Review code for quality, security, and best practices. Use proactively after code changes or before merging."
 model: sonnet
 maxTurns: 40
-memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Edit", "Write"]
 ---

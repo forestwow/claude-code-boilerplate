@@ -1,7 +1,6 @@
 ---
 name: deploy
 description: "Deployment workflow"
-disable-model-invocation: true
 argument-hint: "[environment]"
 context: fork
 agent: devops-engineer

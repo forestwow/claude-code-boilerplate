@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VERSION="0.1.0"
+REPO="${CLAUDE_INIT_REPO:-forestwow/claude-code-boilerplate}"
+REPO_URL="https://github.com/${REPO}.git"
+RAW_URL="https://raw.githubusercontent.com/${REPO}/main/bin/claude-init"
+INSTALL_DIR="${CLAUDE_INIT_INSTALL_DIR:-$HOME/.local/bin}"
+
+# ── Helpers ──────────────────────────────────────────────────────────
+
+die() { echo "Error: $*" >&2; exit 1; }
+
+usage() {
+  cat <<EOF
+claude-init $VERSION — scaffold projects from the Claude Code boilerplate
+
+Usage:
+  claude-init [directory]          Scaffold a new project (default: current dir)
+  claude-init init [directory]     Same as above
+  claude-init update               Update claude-init to the latest version
+  claude-init version              Print version
+  claude-init help                 Show this help
+
+Examples:
+  claude-init my-project           # scaffold into ./my-project
+  claude-init                      # scaffold into current directory
+  claude-init update               # grab latest from GitHub
+EOF
+  exit 0
+}
+
+# ── Commands ─────────────────────────────────────────────────────────
+
+cmd_init() {
+  local target="${1:-.}"
+
+  if [[ "$target" != "." ]]; then
+    mkdir -p "$target"
+  fi
+
+  # Check target is empty (ignoring hidden files like .git)
+  local visible_files
+  visible_files=$(find "$target" -maxdepth 1 -not -name '.*' -not -path "$target" 2>/dev/null | head -1)
+  if [[ -n "$visible_files" ]]; then
+    die "$target is not empty. Use an empty directory."
+  fi
+
+  echo "Fetching latest boilerplate from ${REPO}..."
+
+  local tmpdir
+  tmpdir=$(mktemp -d)
+  trap 'rm -rf "$tmpdir"' EXIT
+
+  git clone --depth 1 "$REPO_URL" "$tmpdir/boilerplate" 2>&1 | grep -v "^$"
+
+  rsync -a --exclude='.git' "$tmpdir/boilerplate/" "$target/"
+
+  if [[ ! -d "$target/.git" ]]; then
+    git -C "$target" init -q
+    echo "Initialized fresh git repository."
+  fi
+
+  echo ""
+  echo "Done! Boilerplate ready in: $(cd "$target" && pwd)"
+  echo ""
+  echo "Next steps:"
+  echo "  cd ${target}"
+  echo "  claude  # then run /setup-project to fill in placeholders"
+}
+
+cmd_update() {
+  echo "Updating claude-init..."
+
+  local tmpfile
+  tmpfile=$(mktemp)
+  trap 'rm -f "$tmpfile"' EXIT
+
+  if command -v curl &>/dev/null; then
+    curl -fsSL "$RAW_URL" -o "$tmpfile"
+  elif command -v wget &>/dev/null; then
+    wget -qO "$tmpfile" "$RAW_URL"
+  else
+    die "curl or wget is required."
+  fi
+
+  # Verify we got a valid script
+  if ! head -1 "$tmpfile" | grep -q "^#!/"; then
+    die "Downloaded file does not look like a valid script."
+  fi
+
+  local install_path="${INSTALL_DIR}/claude-init"
+  mkdir -p "$INSTALL_DIR"
+  mv "$tmpfile" "$install_path"
+  chmod +x "$install_path"
+
+  # Show new version
+  local new_version
+  new_version=$("$install_path" version 2>/dev/null || echo "unknown")
+  echo "Updated to ${new_version} at ${install_path}"
+}
+
+cmd_version() {
+  echo "claude-init $VERSION"
+}
+
+# ── Main ─────────────────────────────────────────────────────────────
+
+case "${1:-}" in
+  -h|--help|help)     usage ;;
+  -v|--version|version) cmd_version ;;
+  update)             cmd_update ;;
+  init)               shift; cmd_init "${1:-.}" ;;
+  *)                  cmd_init "${1:-.}" ;;
+esac

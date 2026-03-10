@@ -11,8 +11,7 @@
       "Agent",
       "Skill",
       "ToolSearch",
-      "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:code.claude.com)"
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": [
       "Read(./.env)",
@@ -41,7 +40,7 @@
           {
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/validate-commit.sh",
-            "timeout": 45,
+            "timeout": 10,
             "statusMessage": "Validating commit..."
           }
         ]

@@ -3,7 +3,6 @@ name: performance-analyzer
 description: "Identify performance bottlenecks and optimizations. Use for profiling, algorithmic analysis, and optimization suggestions."
 model: sonnet
 maxTurns: 40
-memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Edit", "Write"]
 ---

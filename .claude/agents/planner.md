@@ -4,7 +4,7 @@ description: "Analyze codebases and create implementation plans. Use for tasks t
 model: opus
 maxTurns: 50
 permissionMode: plan
-tools: ["Read", "Glob", "Grep", "Bash"]
+tools: ["Read", "Glob", "Grep"]
 disallowedTools: ["Edit", "Write"]
 ---
 

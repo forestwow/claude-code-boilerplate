@@ -16,7 +16,7 @@ That's it. Claude Code now has project-aware agents, skills, and guardrails.
 
 | Component | Count | Location |
 |-----------|-------|----------|
-| Agents | 13 | `.claude/agents/` |
+| Agents | 14 | `.claude/agents/` |
 | Skills | 15 | `.claude/skills/` |
 | Hooks | 3 | `.claude/hooks/` |
 | Rules | 5 | `.claude/rules/` |
@@ -40,6 +40,7 @@ Specialized sub-agents that Claude Code delegates to for focused tasks. Each has
 | `researcher` | Deep codebase exploration (read-only) |
 | `security-auditor` | OWASP/CWE-based vulnerability auditing |
 | `test-writer` | Test generation following AAA pattern |
+| `meta-engineer` | Claude Code config optimization and prompt engineering |
 
 Full catalog: [docs/AGENTS.md](docs/AGENTS.md)
 

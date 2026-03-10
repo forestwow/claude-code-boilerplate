@@ -19,6 +19,7 @@ All agents live in `.claude/agents/`. Claude Code delegates to them for focused,
 | `researcher` | Deep codebase exploration (read-only) | sonnet | none | Read, Glob, Grep, Bash |
 | `security-auditor` | OWASP/CWE vulnerability auditing | sonnet | project | Read, Glob, Grep, Bash |
 | `test-writer` | Test generation and execution | sonnet | project | Read, Edit, Write, Bash |
+| `meta-engineer` | Claude Code config optimization and prompt engineering | opus | project | Read, Edit, Write, Bash, Glob, Grep, WebFetch |
 
 ### Key Columns
 
@@ -48,6 +49,9 @@ All agents live in `.claude/agents/`. Claude Code delegates to them for focused,
 ### Documentation & Testing
 - **`doc-writer`** — Generate inline docs (JSDoc, docstrings) or standalone documentation files.
 - **`test-writer`** — Write tests following AAA pattern, run them, fix failures, report coverage gaps.
+
+### Configuration & Meta
+- **`meta-engineer`** — Audit and optimize Claude Code configs, agents, skills, hooks, and prompts. Uses opus for deep prompt engineering reasoning. Checks latest docs for new features.
 
 ## Interaction Patterns
 

@@ -31,8 +31,7 @@ The hooks in `.claude/hooks/` need to know your toolchain:
 
 - **format-after-edit.sh** — Detects formatter from config files (`.prettierrc`, `rustfmt.toml`, etc.). Add `elif` branches for your formatter.
 - **validate-commit.sh** — Runs linter before `git commit`. Add detection for your linter.
-- **protect-files.sh** — Blocks edits to sensitive files. Update the `DENY_PATTERNS` array with your project's generated/locked files.
-```
+- **protect-files.sh** — Blocks edits to sensitive files. Add new `case` blocks or `if` conditions matching your project's protected file patterns (lock files, credentials, keys).
 
 ### Rules
 

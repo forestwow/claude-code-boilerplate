@@ -3,7 +3,6 @@ name: security-auditor
 description: "Security vulnerability scanning and OWASP auditing. Use for security reviews, dependency audits, and vulnerability identification."
 model: sonnet
 maxTurns: 40
-memory: project
 tools: ["Read", "Glob", "Grep", "Bash"]
 disallowedTools: ["Edit", "Write"]
 ---

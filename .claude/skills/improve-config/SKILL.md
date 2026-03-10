@@ -1,7 +1,6 @@
 ---
 name: improve-config
 description: "Audit and improve Claude Code configuration, agents, skills, and prompts"
-disable-model-invocation: true
 context: fork
 agent: meta-engineer
 ---
