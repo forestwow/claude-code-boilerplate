@@ -6,11 +6,42 @@ Drop this into your repo and get a fully-configured Claude Code environment with
 
 ## Quick Start
 
+### Option A: `claude-init` (recommended)
+
+Install the CLI:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/forestwow/claude-code-boilerplate/main/install.sh | bash
+```
+
+Then scaffold a new project:
+
+```bash
+claude-init my-project
+cd my-project
+claude    # run /setup-project to fill in placeholders
+```
+
+Or initialize in the current (empty) directory:
+
+```bash
+claude-init
+```
+
+To update `claude-init` to the latest version:
+
+```bash
+claude-init update
+```
+
+### Option B: Manual
+
 1. Copy `.claude/` and `CLAUDE.md` to the root of your project.
 2. Run `/setup-project` in Claude Code.
-3. The setup skill auto-detects your stack, fills in CLAUDE.md placeholders, and configures hooks.
 
-That's it. Claude Code now has project-aware agents, skills, and guardrails.
+### What happens next
+
+The setup skill auto-detects your stack, fills in CLAUDE.md placeholders, and configures hooks. Claude Code now has project-aware agents, skills, and guardrails.
 
 ## What's Included
 
@@ -102,6 +133,22 @@ See [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md) for:
 - Adding project-specific agents and skills
 - Modifying hooks for your toolchain
 - Adjusting rules for your team
+
+## `claude-init` Reference
+
+| Command | Description |
+|---------|-------------|
+| `claude-init [dir]` | Scaffold boilerplate into a directory (default: `.`) |
+| `claude-init update` | Update to the latest version from GitHub |
+| `claude-init version` | Print installed version |
+| `claude-init help` | Show usage help |
+
+**Environment variables:**
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `CLAUDE_INIT_REPO` | `forestwow/claude-code-boilerplate` | GitHub repo to pull from (useful for forks) |
+| `CLAUDE_INIT_INSTALL_DIR` | `~/.local/bin` | Where to install the binary |
 
 ## Prerequisites
 
